@@ -1,0 +1,30 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.table-title {
+    width: 90%;
+    padding: .7rem 0;
+    margin-top: 1rem;
+    background-color: rgb(226, 166, 0);
+    border: 2px solid orange;
+    color: white;
+
+}
+
+.table-container{
+    width: 90%;
+}
+
+.table-lines{
+    align-items: center;
+}
+
+table, th, td {
+    border: 2px solid orange;
+    border-collapse: collapse;
+    align-items: center
+  }

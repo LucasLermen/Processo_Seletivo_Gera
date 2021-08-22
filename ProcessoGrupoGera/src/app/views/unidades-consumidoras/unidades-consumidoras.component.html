@@ -1,0 +1,27 @@
+<div class="main">
+        <div class="table-title">
+            <label>
+                Unidades Consumidoras
+            </label>
+        </div>
+        <table class="table-container">
+            <tr class="table-header">
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Distribuidora</th>
+                <th>Número</th>
+                <th>Faturas </th>
+                <th>Ações</th>
+            </tr>
+            <tr class="table-lines" *ngFor="let uc of unidadesConsumidoras" >
+                <td>{{uc.id}}</td>
+                <td>{{uc.nome}}</td>
+                <td>{{uc.endereco}}</td>
+                <td>{{uc.distribuidora}}</td>
+                <td>{{uc.numero}}</td>
+                <td>Faturas</td>
+                <td>Editar/Exluir</td>
+            </tr>
+        </table>
+    </div>
