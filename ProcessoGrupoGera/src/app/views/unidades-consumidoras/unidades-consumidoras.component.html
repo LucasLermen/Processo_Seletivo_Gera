@@ -1,27 +1,63 @@
 <div class="main">
-        <div class="table-title">
-            <label>
-                Unidades Consumidoras
-            </label>
-        </div>
-        <table class="table-container">
-            <tr class="table-header">
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Endereço</th>
-                <th>Distribuidora</th>
-                <th>Número</th>
-                <th>Faturas </th>
-                <th>Ações</th>
-            </tr>
-            <tr class="table-lines" *ngFor="let uc of unidadesConsumidoras" >
-                <td>{{uc.id}}</td>
-                <td>{{uc.nome}}</td>
-                <td>{{uc.endereco}}</td>
-                <td>{{uc.distribuidora}}</td>
-                <td>{{uc.numero}}</td>
-                <td>Faturas</td>
-                <td>Editar/Exluir</td>
-            </tr>
-        </table>
+    <a href="#open-modal" class="btns-container">
+        ADICIONAR
+    </a>
+    <div class="table-title">
+        <label>
+            Unidades Consumidoras
+        </label>
     </div>
+    <table class="table-container">
+        <tr class="table-header">
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>Distribuidora</th>
+            <th>Número</th>
+            <th>Faturas </th>
+            <th>Ações</th>
+        </tr>
+        <tr class="table-lines" *ngFor="let uc of unidadesConsumidoras" >
+            <td>{{uc.id}}</td>
+            <td>{{uc.nome}}</td>
+            <td>{{uc.endereco}}</td>
+            <td>{{uc.distribuidora}}</td>
+            <td>{{uc.numero}}</td>
+            <td>Faturas</td>
+            <td class="actions-lines">
+                <button class="edit-button" >Editar</button>
+                <button class="delete-button" (click) = "deleteUnidadeConsumidora(uc.id, uc.nome)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="open-modal" class="modal-window">
+    <div>
+        <a href="#" title="Close" class="modal-close">Fechar</a>
+        <h1>Adicionar nova Unidade Consumidora</h1>
+        <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" formControlName="nome" >
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" name="endereco" id="endereco" formControlName="endereco">
+            </div>
+            <div class="form-group">
+                <label for="distribuidora">Distribuidora</label>
+                <input type="text" class="form-control" name="distribuidora" id="distribuidora" formControlName="distribuidora">
+            </div>
+            <div class="form-group">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" name="numero" id="numero" formControlName="numero">
+            </div>
+            <button type="submit" class="add-button-forms" [disabled]="formulario.invalid">Adicionar</button>
+        </form>
+
+    </div>
+</div>
+

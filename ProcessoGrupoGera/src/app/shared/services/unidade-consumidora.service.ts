@@ -16,5 +16,22 @@ export class UnidadeConsumidoraService {
 
   getAll(): Observable<UnidadeConsumidora[]> {
 		return this.http.get<UnidadeConsumidora[]>(`${environment.url}${this.path}`);
+  }
+
+  getById(id: number): Observable<UnidadeConsumidora> {
+		return this.http.get<UnidadeConsumidora>(`${environment.url}/${this.path}/${id}`);
 	}
+  
+  addUnidadeConsumidora(uc: UnidadeConsumidora): Observable<UnidadeConsumidora> {
+    return this.http.post<UnidadeConsumidora>(`${environment.url}${this.path}`,uc);
+  }
+
+  editUnidadeConsumidora(id: number, uc: UnidadeConsumidora): Observable<UnidadeConsumidora> {
+    return this.http.post<UnidadeConsumidora>(`${environment.url}${this.path}/${id}`,uc);
+  }
+
+  deleteUnidadeConsumidora(id: number): Observable<any> {
+    return this.http.delete<any>(`${environment.url}${this.path}/${id}`);
+  }
+
 }

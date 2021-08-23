@@ -1,0 +1,25 @@
+<div class="main">
+        <div class="table-title">
+            <label>
+                Faturas
+            </label>
+        </div>
+        <table class="table-container">
+            <tr class="table-header">
+                <th>Id</th>
+                <th>Unidade Consumidora</th>
+                <th>Data de Vencimento</th>
+                <th>Consumo</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </tr>
+            <tr class="table-lines" *ngFor="let fat of faturas" >
+                <td>{{fat.id}}</td>
+                <td>{{fat.unidadeConsumidoraId}}</td>
+                <td>{{fat.data_de_vencimento}}</td>
+                <td>{{fat.consumo}}</td>
+                <td>{{fat.valor | currency:'BRL'}}</td>
+                <td class="actions-lines">Editar/Exluir</td>
+            </tr>
+        </table>
+    </div>

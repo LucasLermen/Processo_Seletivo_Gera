@@ -3,8 +3,22 @@
     background: linear-gradient(90deg, rgba(220,68,0,1) 0%, rgba(239,157,4,1) 50%, rgba(247,200,20,1) 100%);
     padding: 30px 50px 30px 50px;
     display: flex;
+    overflow: hidden;
 }
 
-.copyright{
-    color: #fff;
+.container p{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bolder;
+    margin-left: 1rem;
+    border-radius: 80px; 
+}
+
+.container p:hover{  
+    background-color: rgba(247,200,20,1);
+    color: black;
 }
