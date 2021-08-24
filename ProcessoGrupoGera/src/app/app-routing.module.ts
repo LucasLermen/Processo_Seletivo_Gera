@@ -6,16 +6,17 @@ import { FaturasComponent } from './views/faturas/faturas.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'unidades-consumidoras',
+    pathMatch: 'full'
+  },
+  {
+    path: 'unidades-consumidoras',
     component: UnidadesConsumidorasComponent
   },
   {
       path: 'faturas',
       component: FaturasComponent
-  },
-  {
-    path: 'unidades-consumidoras',
-    component: UnidadesConsumidorasComponent
-}
+  }
 ];
 
 @NgModule({

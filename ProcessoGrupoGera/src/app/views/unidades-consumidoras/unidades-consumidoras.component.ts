@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UnidadeConsumidoraService } from 'src/app/shared/services/unidade-consumidora.service';
 import { UnidadeConsumidora } from 'src/app/shared/models/unidade-consumidora';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unidades-consumidoras',
@@ -11,58 +12,43 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UnidadesConsumidorasComponent implements OnInit {
 
   unidadesConsumidoras!: UnidadeConsumidora[];
-  formulario!: FormGroup;
+  isAdd: boolean = true;
+  editId: number = 0;
+  viewId: number = 0;
 
   constructor(
     private unidadeConsumidoraService: UnidadeConsumidoraService,
-    private formBuilder: FormBuilder,
   ) { 
   }
   
   ngOnInit(): void {
-    this.configFormulario();
     this.unidadeConsumidoraService.getAll()
       .subscribe((data: UnidadeConsumidora[]) => {
         this.unidadesConsumidoras = data
       })     
   }
-  configFormulario() {
-    this.formulario = this.formBuilder.group({
-      nome: ['', Validators.required],
-      endereco: ['', Validators.required],
-      distribuidora: ['', Validators.required],
-      numero: [null, Validators.required]
-    })
+  
+  toAdd() {
+    this.isAdd = true;
   }
 
- /* createUnidadeConservadoraForm(uc?: UnidadeConsumidora) {
-    var form: UnidadeConsumidora;
+  toEdit(id: any) {
+    this.isAdd = false;
+    this.editId = id;
+  }
 
-    form = uc || { nome: '', endereco: '', numero: '', distribuidora: '' };
+  saveViewId(id: any) {
+    this.viewId = id;
+    console.log(this.viewId);
+  }
 
-    this.unidadeConsumidoraForm = this.formBuilder.group({
-      nome: [form.nome, [Validators.required, Validators.maxLength(50)]],
-      endereco: [form.endereco, [Validators.required, Validators.maxLength(200)]],
-      numero: [form.numero, [Validators.required, Validators.maxLength(20)]],
-      distribuidora: [form.distribuidora, [Validators.required, Validators.maxLength(100)]]
-    });
-  }*/
 
-  deleteUnidadeConsumidora(id: any, nome: string){
-    if(confirm("Confirmar exclusão de " + nome + "?")){
+  deleteUnidadeConsumidora(id: any, nome: string) {
+    if(confirm("Confirmar exclusão de " + nome + "?")) {
       this.unidadeConsumidoraService.deleteUnidadeConsumidora(id)
         .subscribe(() => {
-        }
-
-        )
+          this.ngOnInit();
+        })
     }
   }
-
-  onSubmit(){
-    this.unidadeConsumidoraService.addUnidadeConsumidora(this.formulario.value)
-    .subscribe(() => {
-      this.ngOnInit;
-    })
-  }
-
 }

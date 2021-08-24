@@ -10,17 +10,39 @@ import { Fatura } from 'src/app/shared/models/fatura';
 export class FaturasComponent implements OnInit {
 
   faturas!: Fatura[];
+  isAdd: boolean = true;
+  editId: number = 0;
 
   constructor(
     public faturaService: FaturaService
   ) { 
-    this.faturaService.getAll()
-      .subscribe((data: Fatura[]) => {
-        this.faturas = data
-      })     
+
   }
 
   ngOnInit(): void {
+    this.faturaService.getAll()
+    .subscribe((data: Fatura[]) => {
+      this.faturas = data
+    })     
+  }
+
+  editToAdd(){
+    this.isAdd = true;
+  }
+
+  addToEdit(id: any){
+    this.isAdd = false;
+    this.editId = id;
+  }
+
+
+  deleteFatura(id: any){
+    if(confirm("Confirmar exclusão da fatura " + id + "?")){
+      this.faturaService.deleteFatura(id)
+        .subscribe(() => {
+          this.ngOnInit();
+        })
+    }
   }
 
 }

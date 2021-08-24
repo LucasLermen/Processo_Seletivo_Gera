@@ -1,25 +1,42 @@
 <div class="main">
-        <div class="table-title">
-            <label>
-                Faturas
-            </label>
-        </div>
-        <table class="table-container">
-            <tr class="table-header">
-                <th>Id</th>
-                <th>Unidade Consumidora</th>
-                <th>Data de Vencimento</th>
-                <th>Consumo</th>
-                <th>Valor</th>
-                <th>Ações</th>
-            </tr>
-            <tr class="table-lines" *ngFor="let fat of faturas" >
-                <td>{{fat.id}}</td>
-                <td>{{fat.unidadeConsumidoraId}}</td>
-                <td>{{fat.data_de_vencimento}}</td>
-                <td>{{fat.consumo}}</td>
-                <td>{{fat.valor | currency:'BRL'}}</td>
-                <td class="actions-lines">Editar/Exluir</td>
-            </tr>
-        </table>
+    <a href="/faturas#open-add-edit-fat-modal" (click)="editToAdd()" class="btns-container">
+        ADICIONAR
+    </a>
+    <div class="table-title">
+        <label>
+            Faturas
+        </label>
     </div>
+    <table class="table-container">
+        <tr class="table-header">
+            <th>Id</th>
+            <th>Unidade Consumidora</th>
+            <th>Data de Vencimento</th>
+            <th>Consumo</th>
+            <th>Valor</th>
+            <th>Ações</th>
+        </tr>
+        <tr class="table-lines" *ngFor="let fat of faturas" >
+            <td>{{fat.id}}</td>
+            <td>{{fat.unidadeConsumidoraId}}</td>
+            <td>{{fat.data_de_vencimento}}</td>
+            <td>{{fat.consumo}}</td>
+            <td>{{fat.valor | currency:'BRL'}}</td>
+            <td class="actions-lines">
+                <a href="/faturas#open-add-edit-fat-modal" >
+                    <button class="edit-button" (click)="addToEdit(fat.id)" >Editar</button>
+                </a>
+                <button class="delete-button" (click) = "deleteFatura(fat.id)">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="open-add-edit-fat-modal" class="modal-window">
+    <div>
+        <a href="/faturas#" title="Fechar" class="modal-close">X</a>
+        <app-add-edit-fatura-form [isAdd]=isAdd [editId]=editId></app-add-edit-fatura-form>
+    </div>
+</div>

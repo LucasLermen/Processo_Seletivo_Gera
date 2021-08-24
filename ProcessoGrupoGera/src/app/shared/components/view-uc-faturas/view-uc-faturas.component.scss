@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.table-title {
+    width: 95%;
+    padding: .7rem 0;
+    margin: .7rem;
+    background-color: rgba(239,157,4,1);
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.table-container{
+    width: 95%;
+}
+
+table {
+    border-collapse: collapse;
+  }
+
+th, td {
+    border-right: 2px solid orange;
+    border-left: 2px solid orange;
+}
+
+td {
+    padding: .7rem .5rem;
+    text-align: center;
+}
+

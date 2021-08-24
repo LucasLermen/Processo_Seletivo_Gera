@@ -19,7 +19,7 @@ export class UnidadeConsumidoraService {
   }
 
   getById(id: number): Observable<UnidadeConsumidora> {
-		return this.http.get<UnidadeConsumidora>(`${environment.url}/${this.path}/${id}`);
+		return this.http.get<UnidadeConsumidora>(`${environment.url}${this.path}/${id}`);
 	}
   
   addUnidadeConsumidora(uc: UnidadeConsumidora): Observable<UnidadeConsumidora> {
@@ -27,7 +27,7 @@ export class UnidadeConsumidoraService {
   }
 
   editUnidadeConsumidora(id: number, uc: UnidadeConsumidora): Observable<UnidadeConsumidora> {
-    return this.http.post<UnidadeConsumidora>(`${environment.url}${this.path}/${id}`,uc);
+    return this.http.put<UnidadeConsumidora>(`${environment.url}${this.path}/${id}`,uc);
   }
 
   deleteUnidadeConsumidora(id: number): Observable<any> {

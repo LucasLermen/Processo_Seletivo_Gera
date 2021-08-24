@@ -1,0 +1,20 @@
+.form-control {
+    width: 60%;
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+    background-color: #f1e9e9;
+    margin: .2rem 0 .7rem;
+}
+
+label {
+    text-align:right;
+}
+
+.save-button-container{
+    float: right;
+
+    .save-button{
+        background-color: rgba(239,157,4,1);
+    }
+}

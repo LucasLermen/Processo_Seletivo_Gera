@@ -1,0 +1,25 @@
+<h3 *ngIf="isAdd">Adicionar nova Fatura</h3>
+<h3 *ngIf="!isAdd">Editar Fatura</h3>
+<form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+    <div class="form-group">
+        <label for="data_de_vencimento">Data de Vencimento</label>
+        <input type="text" class="form-control" name="data_de_vencimento" 
+            id="data_de_vencimento" formControlName="data_de_vencimento" >
+    </div>
+    <div class="form-group">
+        <label for="consumo">Consumo</label>
+        <input type="text" class="form-control" name="consumo" id="consumo" formControlName="consumo">
+    </div>
+    <div class="form-group">
+        <label for="valor">Valor</label>
+        <input type="text" class="form-control" name="valor" id="valor" formControlName="valor">
+    </div>
+    <div class="form-group">
+        <label for="unidadeConsumidoraId">Id da Unidade Consumidora</label>
+        <input type="text" class="form-control" name="unidadeConsumidoraId"
+            id="unidadeConsumidoraId" formControlName="unidadeConsumidoraId">
+    </div>
+    <a href="/faturas#" class="save-button-container">
+        <button type="submit" class="save-button" [disabled]="formulario.invalid">Salvar</button>
+    </a>
+</form>
