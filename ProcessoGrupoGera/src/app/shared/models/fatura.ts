@@ -1,5 +1,5 @@
 export interface Fatura {
-    id?: number;
+    id?: any;
     nomeUC?: string; 
     unidadeConsumidoraId: number;
     data_de_vencimento: string;

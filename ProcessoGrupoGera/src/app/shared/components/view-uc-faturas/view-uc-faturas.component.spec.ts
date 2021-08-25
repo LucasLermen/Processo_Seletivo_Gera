@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewUcFaturasComponent } from './view-uc-faturas.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ViewUcFaturasComponent', () => {
   let component: ViewUcFaturasComponent;
@@ -8,6 +9,7 @@ describe('ViewUcFaturasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       declarations: [ ViewUcFaturasComponent ]
     })
     .compileComponents();

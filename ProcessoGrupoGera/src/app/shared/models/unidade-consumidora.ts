@@ -1,7 +1,7 @@
 import { Fatura } from './fatura';
 
 export interface UnidadeConsumidora {
-    id?: number;
+    id?: any;
     endereco: string;
     distribuidora: string;
     nome: string;
