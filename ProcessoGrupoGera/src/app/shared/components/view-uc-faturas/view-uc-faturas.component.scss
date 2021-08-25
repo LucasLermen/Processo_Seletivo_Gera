@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .main {
     display: flex;
     flex-direction: column;
@@ -9,7 +11,7 @@
     width: 95%;
     padding: .7rem 0;
     margin: .7rem;
-    background-color: rgba(239,157,4,1);
+    background-color: $mainOrange;
     color: white;
     text-align: center;
     font-weight: bolder;

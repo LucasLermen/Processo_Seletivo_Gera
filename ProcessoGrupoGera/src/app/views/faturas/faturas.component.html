@@ -24,7 +24,7 @@
             <td>{{fat.valor | currency:'BRL'}}</td>
             <td class="actions-lines">
                 <a href="/faturas#open-add-edit-fat-modal" >
-                    <button class="edit-button" (click)="addToEdit(fat.id)" >Editar</button>
+                    <button class="action-button" (click)="addToEdit(fat.id)" >Editar</button>
                 </a>
                 <button class="delete-button" (click) = "deleteFatura(fat.id)">
                     Excluir

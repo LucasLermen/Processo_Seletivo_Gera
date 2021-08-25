@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-unidades-consumidoras',
   templateUrl: './unidades-consumidoras.component.html',
-  styleUrls: ['./unidades-consumidoras.component.scss']
+  styleUrls: ['../../shared/styles/views.scss']
 })
 export class UnidadesConsumidorasComponent implements OnInit {
 

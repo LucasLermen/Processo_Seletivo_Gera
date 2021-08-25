@@ -5,7 +5,7 @@ import { Fatura } from 'src/app/shared/models/fatura';
 @Component({
   selector: 'app-fatura',
   templateUrl: './faturas.component.html',
-  styleUrls: ['./faturas.component.scss']
+  styleUrls: ['../../shared/styles/views.scss']
 })
 export class FaturasComponent implements OnInit {
 

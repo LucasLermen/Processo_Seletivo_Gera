@@ -18,3 +18,10 @@ label {
         background-color: rgba(239,157,4,1);
     }
 }
+
+@media screen and (max-width: 520px) { 
+    .save-button {
+        width: 3.5rem;
+    }
+        
+}

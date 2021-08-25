@@ -1,24 +1,41 @@
 .container{
     background: rgba(220,68,0,1);
     background: linear-gradient(90deg, rgba(220,68,0,1) 0%, rgba(239,157,4,1) 50%, rgba(247,200,20,1) 100%);
-    padding: 30px 50px 30px 50px;
+    padding: .7rem 2rem;
+    width: 100%;
     display: flex;
     overflow: hidden;
 }
 
-.container p{
+.logo {
+    width: 15%;
+}
+
+.tab-button{
     float: left;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: .7rem .9rem;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: bolder;
     margin-left: 1rem;
     border-radius: 80px; 
+
+    &:hover{  
+        background-color: rgba(247,200,20,1);
+        color: black;
+    }
 }
 
-.container p:hover{  
-    background-color: rgba(247,200,20,1);
-    color: black;
+@media screen and (max-width: 520px) { 
+    .logo {
+        width: 20%;
+    }
+    .tab-button {
+        width: 100%;
+        font-size: .5rem;
+        padding: .4rem .6rem;
+        margin-left: .4rem;
+    }
 }
