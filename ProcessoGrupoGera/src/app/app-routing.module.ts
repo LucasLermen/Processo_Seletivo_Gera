@@ -11,12 +11,12 @@ const routes: Routes = [
   },
   {
     path: 'unidades-consumidoras',
-    component: UnidadesConsumidorasComponent
+    component: UnidadesConsumidorasComponent,
   },
   {
       path: 'faturas',
-      component: FaturasComponent
-  }
+      component: FaturasComponent,
+  },
 ];
 
 @NgModule({

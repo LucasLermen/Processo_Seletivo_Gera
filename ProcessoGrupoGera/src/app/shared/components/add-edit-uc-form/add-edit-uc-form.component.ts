@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UnidadeConsumidoraService } from '../../services/unidade-consumidora.service';
@@ -13,6 +13,7 @@ export class AddEditUcFormComponent implements OnInit {
 
   @Input() isAdd: boolean = false;
   @Input() editId: number = 0;
+    
   formulario!: FormGroup;
 
   constructor(
@@ -56,17 +57,57 @@ export class AddEditUcFormComponent implements OnInit {
   }
 
   addUnidadeConsumidora(){
-    this.unidadeConsumidoraService.addUnidadeConsumidora(this.formulario.value)
-    .subscribe(() => {
-      this.router.navigate(['/unidades-consumidoras']);
-    })
+    if(confirm("Deseja confirmar adição dessa Unidade Consumidora?")) {
+      this.unidadeConsumidoraService.addUnidadeConsumidora(this.formulario.value)
+      .subscribe(() => {
+        alert("Unidade consumidora adicionada com sucesso!")
+        this.router.navigate(['/unidades-consumidoras']);
+      },
+      err => {
+        let erro: string;
+
+        switch (err.status){
+          case 422:
+            erro = 'Erro no objeto enviado';
+            break;
+          case 500:
+            erro = 'Erro interno do servidor';
+            break;
+          default:
+            erro = 'Erro desconhecido'
+        }
+
+        alert("Erro encontrado ao adicionar Unidade: " + erro + ". Tente novamente!")
+      }
+      
+      )
+    }
   }
 
   updateUnidadeConsumidora(){
-    this.unidadeConsumidoraService.editUnidadeConsumidora(this.editId, this.formulario.value)
-    .subscribe(() => {
-      this.router.navigate(['/unidades-consumidoras']);
-    })   
+    if(confirm("Deseja confirmar alteração de dados dessa Unidade Consumidora?")) {
+      this.unidadeConsumidoraService.editUnidadeConsumidora(this.editId, this.formulario.value)
+      .subscribe(() => {
+        alert("Unidade consumidora atualizada com sucesso!")
+        this.router.navigate(['/unidades-consumidoras']);
+      },
+      err => {
+        let erro: string;
+
+        switch (err.status){
+          case 404:
+            erro = 'Id informado não existe';
+            break;
+          case 500:
+            erro = 'Erro interno do servidor';
+            break;
+          default:
+            erro = 'Erro desconhecido'
+        }
+        alert("Erro encontrado ao editar Unidade: " + erro + ". Tente novamente!")
+      }
+      )
+    }   
   }
 
 }

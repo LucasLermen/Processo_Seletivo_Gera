@@ -1,5 +1,6 @@
 <h3 *ngIf="isAdd">Adicionar nova Unidade Consumidora</h3>
 <h3 *ngIf="!isAdd">Editar Unidade Consumidora</h3>
+<p>Necessário o prenchimento de todos os campos</p>
 <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
     <div class="form-group">
         <label for="nome">Nome</label>

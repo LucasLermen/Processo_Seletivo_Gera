@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnidadeConsumidoraService } from 'src/app/shared/services/unidade-consumidora.service';
 import { UnidadeConsumidora } from 'src/app/shared/models/unidade-consumidora';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-unidades-consumidoras',
@@ -18,16 +16,19 @@ export class UnidadesConsumidorasComponent implements OnInit {
 
   constructor(
     private unidadeConsumidoraService: UnidadeConsumidoraService,
-  ) { 
-  }
+  ) {  }
   
   ngOnInit(): void {
-    this.unidadeConsumidoraService.getAll()
-      .subscribe((data: UnidadeConsumidora[]) => {
-        this.unidadesConsumidoras = data
-      })     
+    this.loadData();
   }
-  
+
+  loadData() {
+    this.unidadeConsumidoraService.getAll()
+    .subscribe((data: UnidadeConsumidora[]) => {
+      this.unidadesConsumidoras = data
+    })
+  }
+
   toAdd() {
     this.isAdd = true;
   }
@@ -47,8 +48,26 @@ export class UnidadesConsumidorasComponent implements OnInit {
     if(confirm("Confirmar exclusão de " + nome + "?")) {
       this.unidadeConsumidoraService.deleteUnidadeConsumidora(id)
         .subscribe(() => {
+          alert(nome + " deletada com sucesso!")
           this.ngOnInit();
-        })
+        },
+        err => {
+          let erro: string;
+
+          switch (err.status){
+            case 404:
+              erro = 'Id informado não existe';
+              break;
+            case 500:
+              erro = 'Erro interno do servidor';
+              break;
+            default:
+              erro = 'Erro desconhecido'
+          }
+
+          alert("Erro encontrado ao excluir Unidade Consumidora: " + erro + ". Tente novamente!")
+        }
+        )
     }
   }
 }

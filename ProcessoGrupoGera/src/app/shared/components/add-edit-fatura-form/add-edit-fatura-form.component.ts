@@ -49,26 +49,64 @@ export class AddEditFaturaFormComponent implements OnInit {
 
   onSubmit(){
     if (this.isAdd) {
-      this.addUnidadeConsumidora();
+      this.addFatura();
     } else {
-      this.updateUnidadeConsumidora();
+      this.updateFatura();
     }
   }
 
-  addUnidadeConsumidora(){
-    this.faturaService.addFatura(this.formulario.value)
-    .subscribe(() => {
-      this.router.navigate(['/faturas']);
-      this.ngOnInit();
-    })
+  addFatura(){
+    if(confirm("Deseja confirmar adição dessa Fatura?")) {
+      this.faturaService.addFatura(this.formulario.value)
+      .subscribe(() => {
+        alert("Fatura adicionada com sucesso!")
+        this.router.navigate(['/faturas']);
+      },
+      err => {
+        let erro: string;
+
+        switch (err.status){
+          case 422:
+            erro = 'Id de Unidade Consumidora informado não existe';
+            break;
+          case 500:
+            erro = 'Erro interno do servidor';
+            break;
+          default:
+            erro = 'Erro desconhecido'
+        }
+        alert("Erro encontrado ao adicionar Fatura: " + erro + ". Tente novamente!")
+        console.log(err);
+      }
+      
+      )
+    }
   }
 
-  updateUnidadeConsumidora(){
-    this.faturaService.editFatura(this.editId, this.formulario.value)
-    .subscribe(() => {
-      this.router.navigate(['/faturas']);
-      this.ngOnInit();
-    })   
+  updateFatura(){
+    if(confirm("Deseja confirmar alteração de dados dessa Fatura?")) {
+      this.faturaService.editFatura(this.editId, this.formulario.value)
+      .subscribe(() => {
+        alert("Fatura atualizada com sucesso!")
+        this.router.navigate(['/faturas']);
+      },
+      err => {
+        let erro: string;
+
+        switch (err.status){
+          case 404:
+            erro = 'Id informado não existe';
+            break;
+          case 500:
+            erro = 'Erro interno do servidor';
+            break;
+          default:
+            erro = 'Erro desconhecido'
+        }
+
+        alert("Erro encontrado ao editar Fatura: " + erro + ". Tente novamente!")
+      }) 
+    }
   }
 
 

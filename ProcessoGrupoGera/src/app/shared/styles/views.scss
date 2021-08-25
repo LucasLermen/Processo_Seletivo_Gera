@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .main {
     display: flex;
     flex-direction: column;
@@ -14,14 +16,14 @@
     font-size: 1rem;
     font-weight: bolder;
     margin-top: 1rem;
-    background-color: rgba(239,157,4,1);
+    background-color: $mainOrange;
     border-radius: 10px;
 }
 
 .modal-window {
     position: fixed;
     background-color: rgba(255, 255, 255, 0.8);
-    border-right: 2px solid rgba(239,157,4,1);
+    border-right: 2px solid $mainOrange;
     top: 0;
     right: 0;
     bottom: 0;
@@ -38,7 +40,7 @@
 
     }
     & > div {
-        border: 1px solid rgba(239,157,4,1);
+        border: 1px solid $mainOrange;
         width: 40%;
         position: absolute;
         top: 50%;
@@ -74,7 +76,7 @@
     width: 90%;
     padding: .7rem 0;
     margin: .7rem;
-    background-color: rgba(239,157,4,1);
+    background-color: $mainOrange;
     color: white;
     text-align: center;
     font-weight: bolder;
@@ -90,7 +92,7 @@
 }
 
 .action-button{
-    background-color: rgba(239,157,4,1);
+    background-color: $mainOrange;
 }
 
 .delete-button{

@@ -1,5 +1,5 @@
 <div class="main">
-    <a href="/faturas#open-add-edit-fat-modal" (click)="editToAdd()" class="btns-container">
+    <a href="/faturas#AdicionarEditarFatura" (click)="editToAdd()" class="btns-container">
         ADICIONAR
     </a>
     <div class="table-title">
@@ -10,7 +10,7 @@
     <table class="table-container">
         <tr class="table-header">
             <th>Id</th>
-            <th>Unidade Consumidora</th>
+            <th> Id - Unidade Consumidora</th>
             <th>Data de Vencimento</th>
             <th>Consumo</th>
             <th>Valor</th>
@@ -18,12 +18,12 @@
         </tr>
         <tr class="table-lines" *ngFor="let fat of faturas" >
             <td>{{fat.id}}</td>
-            <td>{{fat.unidadeConsumidoraId}}</td>
+            <td>{{fat.unidadeConsumidoraId}} - {{fat.nomeUC}}</td>
             <td>{{fat.data_de_vencimento}}</td>
             <td>{{fat.consumo}}</td>
             <td>{{fat.valor | currency:'BRL'}}</td>
             <td class="actions-lines">
-                <a href="/faturas#open-add-edit-fat-modal" >
+                <a href="/faturas#AdicionarEditarFatura" >
                     <button class="action-button" (click)="addToEdit(fat.id)" >Editar</button>
                 </a>
                 <button class="delete-button" (click) = "deleteFatura(fat.id)">
@@ -34,9 +34,9 @@
     </table>
 </div>
 
-<div id="open-add-edit-fat-modal" class="modal-window">
+<div id="AdicionarEditarFatura" class="modal-window">
     <div>
-        <a href="/faturas#" title="Fechar" class="modal-close">X</a>
+        <a href="/faturas" title="Fechar" class="modal-close">X</a>
         <app-add-edit-fatura-form [isAdd]=isAdd [editId]=editId></app-add-edit-fatura-form>
     </div>
 </div>

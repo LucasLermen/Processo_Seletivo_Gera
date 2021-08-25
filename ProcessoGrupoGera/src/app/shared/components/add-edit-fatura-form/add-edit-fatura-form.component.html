@@ -1,5 +1,6 @@
 <h3 *ngIf="isAdd">Adicionar nova Fatura</h3>
 <h3 *ngIf="!isAdd">Editar Fatura</h3>
+<p>Necessário o prenchimento de todos os campos</p>
 <form (ngSubmit)="onSubmit()" [formGroup]="formulario">
     <div class="form-group">
         <label for="data_de_vencimento">Data de Vencimento</label>
@@ -19,7 +20,7 @@
         <input type="text" class="form-control" name="unidadeConsumidoraId"
             id="unidadeConsumidoraId" formControlName="unidadeConsumidoraId">
     </div>
-    <a href="/faturas#" class="save-button-container">
+    <a class="save-button-container">
         <button type="submit" class="save-button" [disabled]="formulario.invalid">Salvar</button>
     </a>
 </form>
